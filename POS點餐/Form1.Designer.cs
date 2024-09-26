@@ -148,6 +148,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "不打折",
             "雞腿飯買二送一",
             "雞排飯買三個250(折20)",
             "鰻魚飯搭配鮮菇濃湯 150",

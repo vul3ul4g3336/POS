@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace POS點餐
 {
     internal class DisCount
     {
+        // 不打折
+
         //雞腿飯買二送一
         //雞排飯買三個250(折20)
         // 鰻魚飯搭配鮮菇濃湯 150
@@ -19,7 +22,18 @@ namespace POS點餐
         // 全場消費滿300折50
         // 全場消費打八折
 
+        public static void DiscountOrder(List<Item> items, string discountType)
+        {
 
+
+            //switch (discountType)
+            //{
+            //    if()
+            //}
+
+
+            ShowPanel.ShowThePanel(items);
+        }
 
 
     }

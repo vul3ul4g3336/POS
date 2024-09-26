@@ -21,6 +21,7 @@ namespace POS點餐
         public Form1()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 0;
             PanelEvent.ReceiveInfo += PanelEvent_ReceiveInfo;
         }
 
@@ -76,7 +77,7 @@ namespace POS點餐
             }
 
             Item item = CreateItem(checkBox.Text, (int)numeric.Value);
-            Order.Add(item);
+            Order.Add(item, comboBox1.Text);
 
 
 
@@ -90,13 +91,24 @@ namespace POS點餐
             checkBox.Checked = numeric.Value != 0 ? true : false;
 
             Item item = CreateItem(checkBox.Text, (int)numeric.Value);
-            Order.Add(item);
+            Order.Add(item, comboBox1.Text);
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Console.WriteLine(comboBox1.Text);
+
+
+            Order.OrderDiscount(comboBox1.Text);
         }
     }
 }
+
+
+
+
+
+
+
+
