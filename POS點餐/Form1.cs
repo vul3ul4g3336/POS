@@ -21,6 +21,13 @@ namespace POS點餐
         public Form1()
         {
             InitializeComponent();
+            PanelEvent.ReceiveInfo += PanelEvent_ReceiveInfo;
+        }
+
+        private void PanelEvent_ReceiveInfo(object sender, FlowLayoutPanel e)
+        {
+            flowLayoutPanel5.Controls.Clear();
+            flowLayoutPanel5.Controls.Add(e);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,24 +42,13 @@ namespace POS點餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string input = "HelloWorld12345";
-            Console.WriteLine(input.CalcNumberCountFromString());
-
-
             flowLayoutPanel1.CheckBoxDisplay(foodChoices, CheckBoxCheckedChange, ValueChange);
             flowLayoutPanel2.CheckBoxDisplay(snackChoices, CheckBoxCheckedChange, ValueChange);
             flowLayoutPanel3.CheckBoxDisplay(soupChoices, CheckBoxCheckedChange, ValueChange);
             flowLayoutPanel4.CheckBoxDisplay(drinkChoices, CheckBoxCheckedChange, ValueChange);
         }
 
-        private void RenderDetail(List<FlowLayoutPanel> panels)
-        {
-            flowLayoutPanel5.Controls.Clear();
-            foreach (FlowLayoutPanel panel in panels)
-            {
-                flowLayoutPanel5.Controls.Add(panel);
-            }
-        }
+
 
         private Item CreateItem(string input, int count)
         {
@@ -81,7 +77,7 @@ namespace POS點餐
 
             Item item = CreateItem(checkBox.Text, (int)numeric.Value);
             Order.Add(item);
-            RenderDetail(Order.ShowPanel());
+
 
 
         }
@@ -95,10 +91,12 @@ namespace POS點餐
 
             Item item = CreateItem(checkBox.Text, (int)numeric.Value);
             Order.Add(item);
-            RenderDetail(Order.ShowPanel());
+
         }
 
-
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(comboBox1.Text);
+        }
     }
 }

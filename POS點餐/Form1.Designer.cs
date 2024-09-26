@@ -40,13 +40,14 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(773, 550);
+            this.button1.Location = new System.Drawing.Point(862, 549);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 38);
+            this.button1.Size = new System.Drawing.Size(90, 38);
             this.button1.TabIndex = 1;
             this.button1.Text = "結帳";
             this.button1.UseVisualStyleBackColor = true;
@@ -55,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(730, 563);
+            this.label1.Location = new System.Drawing.Point(813, 562);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(11, 12);
             this.label1.TabIndex = 2;
@@ -72,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(680, 563);
+            this.label2.Location = new System.Drawing.Point(758, 562);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 8;
@@ -140,14 +141,35 @@
             // 
             this.flowLayoutPanel5.Location = new System.Drawing.Point(589, 26);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(347, 438);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(363, 518);
             this.flowLayoutPanel5.TabIndex = 14;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "雞腿飯買二送一",
+            "雞排飯買三個250(折20)",
+            "鰻魚飯搭配鮮菇濃湯 150",
+            "買兩個排骨飯送一碗綠豆湯",
+            "雞排飯搭玉米濃湯打九折",
+            "排骨飯加洋蔥圈加紅茶 150元",
+            "飲料三杯100元",
+            "鰻魚飯搭配洋蔥圈150元",
+            "全場消費滿300折50",
+            "全場消費打八折"});
+            this.comboBox1.Location = new System.Drawing.Point(589, 559);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(149, 20);
+            this.comboBox1.TabIndex = 15;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 613);
+            this.ClientSize = new System.Drawing.Size(1043, 599);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.flowLayoutPanel5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.flowLayoutPanel4);
@@ -181,6 +203,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
