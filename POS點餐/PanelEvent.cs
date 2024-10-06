@@ -9,9 +9,9 @@ namespace POS點餐
 {
     internal class PanelEvent
     {
-        public static event EventHandler<FlowLayoutPanel> ReceiveInfo;
+        public static event EventHandler<OrderDetails> ReceiveInfo;
 
-        public static void NotifyMessage(FlowLayoutPanel Panel)
+        public static void NotifyMessage(OrderDetails Panel)
         {
             ReceiveInfo.Invoke(null, Panel);
         }

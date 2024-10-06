@@ -147,18 +147,6 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "不打折",
-            "雞腿飯買二送一",
-            "雞排飯買三個250(折20)",
-            "鰻魚飯搭配鮮菇濃湯 150",
-            "買兩個排骨飯送一碗綠豆湯",
-            "雞排飯搭玉米濃湯打九折",
-            "排骨飯加洋蔥圈加紅茶 150元",
-            "飲料三杯100元",
-            "鰻魚飯搭配洋蔥圈150元",
-            "全場消費滿300折50",
-            "全場消費打八折"});
             this.comboBox1.Location = new System.Drawing.Point(589, 559);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(149, 20);

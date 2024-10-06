@@ -35,7 +35,7 @@ namespace POS點餐
 
         public static void OrderDiscount(string type)
         {
-            DisCount.DiscountOrder(list);
+            DisCount.DiscountOrder(list,type);
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS點餐.Discounts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,17 +19,37 @@ namespace POS點餐
         string[] snackChoices = { "洋蔥圈$50", "雞塊$60", "薯條$40", "薯餅$50" };
         string[] soupChoices = { "玉米濃湯$40", "鮮菇濃湯$50", "綠豆湯$30" };
         string[] drinkChoices = { "紅茶$40", "綠茶$40", "鮮奶$50" };
+        //        不打折
+
+        List<KeyValueModel> discounts = new List<KeyValueModel>()
+        {
+            new KeyValueModel("不打折","WithoutDiscount"),
+            new KeyValueModel("雞腿飯買二送一","雞腿飯買二送一"),
+            new KeyValueModel("雞排飯買三個250(折20)","雞腿飯3個折20"),
+            new KeyValueModel("買兩個排骨飯送一碗綠豆湯","兩排骨送一綠豆湯"),
+            new KeyValueModel("雞排飯搭玉米濃湯打九折","雞排飯搭玉米湯九折"),
+            new KeyValueModel("排骨飯加洋蔥圈加紅茶 150元","排骨飯洋蔥圈紅茶150元"),
+            new KeyValueModel("飲料三杯100元","飲料三杯100"),
+            new KeyValueModel("鰻魚飯搭配洋蔥圈150元","鰻魚飯洋蔥圈150元"),
+            new KeyValueModel("全場消費滿300折50","滿300折50"),
+            new KeyValueModel("全場消費打八折","全場八折"),
+        };
         public Form1()
         {
             InitializeComponent();
-            comboBox1.SelectedIndex = 0;
+
             PanelEvent.ReceiveInfo += PanelEvent_ReceiveInfo;
+            comboBox1.DataSource = discounts;
+            comboBox1.DisplayMember = "Key";
+            comboBox1.ValueMember = "Value";
+
         }
 
-        private void PanelEvent_ReceiveInfo(object sender, FlowLayoutPanel e)
+        private void PanelEvent_ReceiveInfo(object sender, OrderDetails e)
         {
             flowLayoutPanel5.Controls.Clear();
-            flowLayoutPanel5.Controls.Add(e);
+            flowLayoutPanel5.Controls.Add(e.flowLayoutPanel);
+            label1.Text = e.total.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,7 +98,7 @@ namespace POS點餐
             }
 
             Item item = CreateItem(checkBox.Text, (int)numeric.Value);
-            Order.Add(item, comboBox1.Text);
+            Order.Add(item, comboBox1.SelectedValue.ToString());
 
 
 
@@ -91,17 +112,22 @@ namespace POS點餐
             checkBox.Checked = numeric.Value != 0 ? true : false;
 
             Item item = CreateItem(checkBox.Text, (int)numeric.Value);
-            Order.Add(item, comboBox1.Text);
+            Order.Add(item, comboBox1.SelectedValue.ToString());
 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(comboBox1.Text);
+            if (comboBox1.SelectedValue is string)
+            {
+                Order.OrderDiscount(comboBox1.SelectedValue.ToString());
+
+            }
 
 
-            Order.OrderDiscount(comboBox1.Text);
         }
+
+
     }
 }
 

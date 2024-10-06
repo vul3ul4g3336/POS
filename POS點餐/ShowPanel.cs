@@ -41,7 +41,7 @@ namespace POS點餐
                  CreatePanel($"{list[i].Name}", $"{list[i].Price}", $"{list[i].Count}", $"{list[i].SubTotal}");
                 container.Controls.Add(flowLayoutPanel);
             }
-            PanelEvent.NotifyMessage(container);
+            PanelEvent.NotifyMessage(new OrderDetails(container, list.Sum(x => x.SubTotal)));
             return container;
         }
     }
