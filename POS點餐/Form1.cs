@@ -25,7 +25,7 @@ namespace POS點餐
         {
             new KeyValueModel("不打折","WithoutDiscount"),
             new KeyValueModel("雞腿飯買二送一","雞腿飯買二送一"),
-            new KeyValueModel("雞排飯買三個250(折20)","雞腿飯3個折20"),
+            new KeyValueModel("雞排飯買三個250(折20)","雞排飯3個折20"),
             new KeyValueModel("買兩個排骨飯送一碗綠豆湯","兩排骨送一綠豆湯"),
             new KeyValueModel("雞排飯搭玉米濃湯打九折","雞排飯搭玉米湯九折"),
             new KeyValueModel("排骨飯加洋蔥圈加紅茶 150元","排骨飯洋蔥圈紅茶150元"),
