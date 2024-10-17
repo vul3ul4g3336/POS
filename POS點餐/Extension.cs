@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static POS點餐.Models.MenuModel;
 
 namespace POS點餐
 {
@@ -24,10 +25,10 @@ namespace POS點餐
             return count;
         }
 
-        public static void CheckBoxDisplay(this FlowLayoutPanel flowLayout, string[] str, EventHandler CheckedChanged, EventHandler ValueChanged)
+        public static void CheckBoxDisplay(this FlowLayoutPanel flowLayout, Food[] foods, EventHandler CheckedChanged, EventHandler ValueChanged)
         {
 
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < foods.Length; i++)
             {
                 FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
                 NumericUpDown numericUpDown = new NumericUpDown();
@@ -38,7 +39,7 @@ namespace POS點餐
                 checkBox.CheckedChanged += CheckedChanged;
                 numericUpDown.ValueChanged += ValueChanged;
 
-                checkBox.Text = str[i];
+                checkBox.Text = foods[i].Name + "$" + foods[i].price;
 
                 flowLayout.Controls.Add(flowLayoutPanel);
                 flowLayoutPanel.Height = 30;

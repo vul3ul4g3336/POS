@@ -8,34 +8,42 @@ namespace POS點餐.Discounts
 {
     internal class 兩排骨送一綠豆湯 : DiscountType
     {
-        public 兩排骨送一綠豆湯(List<Item> list) : base(list)
+        private string A_product;
+        private string B_product;
+        private int CountOfA;
+        private int CountOfB;
+        public 兩排骨送一綠豆湯(List<Item> list,string A,string B,int A_Count,int B_Count) : base(list)
         {
+            A_product = A;
+            B_product = B;
+            CountOfA = A_Count;
+            CountOfB = B_Count;
         }
 
         public override void DiscountOff()
         {
-            Item rice = list.FirstOrDefault(x => x.Name == "排骨飯" && x.Count >= 2);
-            Item soup = list.FirstOrDefault(x => x.Name == "綠豆湯");
+            Item mainProduct = list.FirstOrDefault(x => x.Name == A_product && x.Count >= CountOfA);
+            Item secondaryProduct = list.FirstOrDefault(x => x.Name == B_product);
 
-            if (rice != null)
+            if (mainProduct != null)
             {
-                int freeSoup = rice.Count / 2;
-                if (soup.Count == 0)
+                int freeProduct = mainProduct.Count / CountOfA;
+                if (secondaryProduct.Count == 0)
                 {
-                    list.Add(new Item("(優惠)贈送綠豆湯", 0, freeSoup));
+                    list.Add(new Item($"(優惠)贈送{B_product}", 0, freeProduct));
                 }
-                if (freeSoup > soup.Count)
+                if (freeProduct > secondaryProduct.Count)
                 {
-                    int diff = freeSoup - soup.Count;
-                    list.Add(new Item("(優惠)贈送綠豆湯", soup.Price * -1, soup.Count));
-                    list.Add(new Item("(優惠)贈送綠豆湯", 0, diff));
+                    int diff = freeProduct - secondaryProduct.Count;
+                    list.Add(new Item($"(優惠)贈送{B_product}", secondaryProduct.Price * -1, secondaryProduct.Count));
+                    list.Add(new Item($"(優惠)贈送{B_product}", 0, diff));
 
                 }
                 else
                 {
-                    int diff = soup.Count - soup.Count;
-                    list.Add(new Item("(優惠)贈送綠豆湯", soup.Price * -1, soup.Count));
-                    list.Add(new Item("(優惠)贈送綠豆湯", 0, diff));
+                    int diff = secondaryProduct.Count - secondaryProduct.Count;
+                    list.Add(new Item($"(優惠)贈送{B_product}", secondaryProduct.Price * -1, secondaryProduct.Count));
+                    list.Add(new Item($"(優惠)贈送{B_product}", 0, diff));
                 }
 
             }

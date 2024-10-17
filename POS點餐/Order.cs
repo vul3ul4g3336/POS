@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static POS點餐.Models.MenuModel;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace POS點餐
@@ -11,7 +12,7 @@ namespace POS點餐
     internal class Order
     {
         static List<Item> list = new List<Item>();
-        public static void Add(Item item, string type)
+        public static void Add(Item item, StrategyType type)
         {
             // 根據傳入的Item內容 判斷要做新增 修改數量 刪除 來維護你的List
             Item orderFood = list.FirstOrDefault(x => x.Name == item.Name);
@@ -33,9 +34,9 @@ namespace POS點餐
 
         }
 
-        public static void OrderDiscount(string type)
+        public static void OrderDiscount(StrategyType type)
         {
-            DisCount.DiscountOrder(list,type);
+            DisCount.DiscountOrder(list, type);
         }
 
 
